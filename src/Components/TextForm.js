@@ -18,20 +18,10 @@ export default function TextForm(props) {
         props.showAlert("Converted to LOWERCASE", "success")
     }
     const capitalized = () => {
-        let mySentence = text
-        let word = mySentence.split(" ")
-        for(let i=0; i<word.length; i++){
-            word[i] = word[i][0].toUpperCase() + word[i].substr(1);
-        }   
+        text = text.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")
+        setText(text)
+        props.showAlert("Converted to CAPITALIZEDCASE", "success")
     }
-    // function capitalizeFirstLetter(sentence) {
-    //     return sentence.replace(/\b\w/g, function (char) {
-    //         return char.toUpperCase();
-    //     });
-    // }
-    // const capitalizeFirstLetter = (string) => {
-    //     return string.charAt(0).toUpperCase() + string.slice(1);
-    // }
     const handler = (e) => {
         setText(e.target.value)
     }
